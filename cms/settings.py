@@ -36,7 +36,7 @@ SECRET_KEY = secret_key
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'org-api-zflk.onrender.com',
+    '*',
 ]
 
 
