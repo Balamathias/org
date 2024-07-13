@@ -1,7 +1,7 @@
 from abc import abstractmethod
 import uuid
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, AbstractUser
 from django.contrib.auth.models import PermissionsMixin
 
 from django.conf import settings
@@ -50,6 +50,8 @@ class Organization(models.Model):
     def __str__(self):
         return self.name
 
+# class User(AbstractUser):
+#     pass
 
 class User(AbstractBaseUser, PermissionsMixin):
 
@@ -60,7 +62,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     firstName = models.CharField(max_length=30)
     lastName = models.CharField(max_length=30)
     phone = models.CharField(max_length=30)
-    username = models.CharField(max_length=30, blank=True, null=True)
+    username = models.CharField(max_length=40, blank=True, null=True)
     organization = models.ForeignKey('Organization', on_delete=models.SET_NULL, null=True, blank=True)
 
     is_active = models.BooleanField(default=True)
