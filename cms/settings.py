@@ -11,14 +11,11 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 import os
-from dotenv import load_env
 
 # Load environment variables from .env file
 # Get the value of an environment variable
 secret_key = os.getenv('SECRET_KEY')
 database_url = os.getenv('DATABASE_URL')
-
-load_env()
 
 from pathlib import Path
 
