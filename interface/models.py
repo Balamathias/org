@@ -45,6 +45,7 @@ class Organization(models.Model):
     orgId = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
     name = models.CharField(max_length=100)
     description = models.TextField(null=True, blank=True)
+    content = models.JSONField(null=True, blank=True, default=dict)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
