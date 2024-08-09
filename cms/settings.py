@@ -10,15 +10,15 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
-from dotenv import load_dotenv
 import os
+from dotenv import load_env
 
 # Load environment variables from .env file
-load_dotenv()
-
 # Get the value of an environment variable
 secret_key = os.getenv('SECRET_KEY')
 database_url = os.getenv('DATABASE_URL')
+
+load_env()
 
 from pathlib import Path
 
@@ -33,11 +33,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = secret_key
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
 
-ALLOWED_HOSTS = [
-    '*',
-]
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(" ")
 
 
 # Application definition
